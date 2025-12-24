@@ -29,7 +29,7 @@ const Home = () => {
         <Container className="py-5">
           <Row>
             <Col lg="12">
-              <div className="text-center body-font">Shop By Categrory</div>
+              <div className="shop-category text-center body-font ">Shop By Categrory</div>
             </Col>
             <Col lg="12">
               <HeroCarousel />
@@ -54,7 +54,7 @@ const Home = () => {
         </Container>
       </section>
       {/* categrory section end */}
-      <section className="photo-grids">
+      {/* <section className="photo-grids">
         <Container fluid className="px-0">
           <Row>
             <Col lg="12">
@@ -62,14 +62,14 @@ const Home = () => {
             </Col>
           </Row>
         </Container>
-      </section>
+      </section> */}
       <section className="">
         <Container fluid>
           <Row>
             <Col lg="6" className="p-5 align-content-center">
               <div>
                 <h2 className="body-font">
-                  Refer mastertubes to your friends
+                  Refer mastertubes.com to your friends
                 </h2>
                 <p className="title-font">
                  Refer Piggy Bank to your friends and family,
@@ -88,7 +88,7 @@ memorable special moments!
           </Row>
         </Container>
       </section>
-      <section className="py-5 occasion">
+      {/* <section className="py-5 occasion">
         <Container fluid>
           <Row>
             <Col lg="12 ">
@@ -97,7 +97,7 @@ memorable special moments!
             </Col>
           </Row>
         </Container>
-      </section>
+      </section> */}
       <section className="py-5 top_sell">
         <Container>
           <Row>
@@ -125,7 +125,7 @@ memorable special moments!
           </Row>
         </Container>
       </section>
-      <section className="py-5">
+      {/* <section className="py-5">
         <Container fluid className="px-0">
           <Row>
             <Col lg="12">
@@ -133,7 +133,7 @@ memorable special moments!
             </Col>
           </Row>
         </Container>
-      </section>
+      </section> */}
       <section>
         <Container>
           <Row>

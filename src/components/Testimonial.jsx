@@ -63,7 +63,7 @@ export default function Testimonial() {
   const sliderItems = [...slides, ...slides.slice(0, itemsPerView)];
 
   return (
-    <section className="slider-wrapper align-content-center">
+    <section className="slider-wrapper align-content-center m-0">
       <div className="slider-container">
         <div
           className="slider-track"

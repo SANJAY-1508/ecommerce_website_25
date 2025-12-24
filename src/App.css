@@ -1,13 +1,23 @@
 /* home css start */
 .category-bg {
-  background: url("./assets//images/home/yellow.webp");
+  background: url("../src/assets/images/category/category1.jpeg");
+
+
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
 }
+.shop-category{
+  font-size: 150%;
+  
+
+   
+   
+}
 .slider-wrapper {
   width: 100%;
   overflow: hidden;
+ 
 }
 
 .slider-container {
@@ -330,11 +340,13 @@
   line-height: 32px;
 }
 .feed-back {
-  background-image: url(./assets/images/home/Testimonials.webp);
+  background-image: url(./assets/images/category/feed1.jpg!sw800);
+  /* background-color:white; */
   background-position: center;
   background-repeat: no-repeat;
-  padding: 196px 0 0 0;
-  background-size: cover;
+  /* padding: 196px 0 0 0; */
+  padding:50px;
+    background-size: cover;
 }
 .testimonial {
   background-color: #e7e7e7;

@@ -7,23 +7,11 @@ const banners = [
     image:banner1,
     // title: "Welcome to Our Website",
     // subtitle: "Build modern apps with React",
-  },
-  {
-    id: 2,
-    image: banner2,
-    // title: "Fast & Responsive",
-    // subtitle: "Optimized for all devices",
-  },
-  {
-    id: 3,
-    image: "https://picsum.photos/id/1019/1200/500",
-    // title: "Clean UI",
-    // subtitle: "Simple & powerful design",
-  },
+  }
 ];
 
 export default function FadeBannerCarousel() {
-  const [current, setCurrent] = useState(0);
+  const [current, setCurrent] = useState(1);
 
   // Auto play
   useEffect(() => {
@@ -50,7 +38,7 @@ export default function FadeBannerCarousel() {
           </div>
         ))}
 
-        {/* Dots */}
+    
         <div className="fade-dots">
           {banners.map((_, index) => (
             <span

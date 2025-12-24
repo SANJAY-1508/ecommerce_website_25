@@ -264,14 +264,14 @@ textarea.form-control {
 }
 
 /* Each slide stacked on top */
-.fade-slide {
-  position: absolute;
-  inset: 0;
-  background-size: cover;
-  background-position: center;
-  opacity: 0;
-  transition: opacity 1s ease-in-out;
-}
+  .fade-slide {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    /* transition: opacity 1s ease-in-out; */
+  }
 
 /* Active slide */
 .fade-slide.active {
@@ -312,7 +312,7 @@ textarea.form-control {
   background: rgba(255,255,255,0.5);
   border-radius: 50%;
   cursor: pointer;
-  transition: background 0.3s;
+  /* transition: background 0.3s; */
 }
 
 .fade-dot.active {
@@ -323,13 +323,39 @@ textarea.form-control {
 
 /* footer start */
   .bottoms{
-    background-image: url(../assets/images//Footer-Images.webp);
+    /* background-image: url(../assets/images/category/footer4.webp);
+     */
+     background-color: blanchedalmond;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     padding: 50px 0;
-    color:#fff;
+    /* padding-left: 500px; */
+    color:black;
   }
+   /* .bottoms {
+  position: relative;
+  background-color: blanchedalmond;
+  padding: 50px 50px 50px 180px;
+  color: black;
+  padding-left: 500px;
+}
+
+  .bottoms::before {
+  content: "";
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+
+  width: 400px;
+  height: 400px; 
+
+  background-image: url("../assets/images/category/slogan.jpeg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+} */
   .social-icon{
     border: 2px solid #fff;
     border-radius: 50px;
