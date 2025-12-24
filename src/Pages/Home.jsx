@@ -6,7 +6,7 @@ import ProductGrid from "../components/ProductGrid";
 import CenterBanner from "../assets/images/home/centerbanner.webp";
 import ReferBanner from "../assets/images/home/spyder.webp";
 import Occasion from "../components/Occasion";
-import TopSell from "../assets/images/home/fancy.webp";
+import TopSell from "../assets/images/category/fancy.webp";
 import Selling from '../assets/images/home/EarlyCrackers.webp';
 import Rectangle from '../assets/images/home/Rectangle.webp';
 import { FaRegMap,FaTags  } from "react-icons/fa";
@@ -105,12 +105,12 @@ const Home = () => {
             </Col>
             <Col lg="6 align-content-center body-font">
               <h2>TOP SELLING PRODUCTS</h2>
-              <h4>Levis - 3" Aerial Shorts</h4>
+              <h4>Royal Red Piggy Bank</h4>
               <p>
                 <span className="old-price">Rs. 300.00</span>{" "}
                 <span className="new-price">Rs. 64.00</span>
               </p>
-              <p className="title-font">Illuminate your Diwali celebrations with our 3-inch aerial shots! Experience a visual delight with sharp, bright sparks that fill the night sky. Elevate your festivities with our premium fireworks crackers—a dazzling celebration essential!</p>
+              <p className="title-font">Start the New Year with smart savings and positive habits! This elegant royal red metal piggy bank is perfect for setting new goals and building better money habits. Strong, stylish, and inspiring, it’s a beautiful reminder that every coin saved brings you closer to your dreams. A perfect New Year gift for kids, adults, and loved ones—because great beginnings start with small steps.</p>
               <button className="shop_now">Add to Cart</button>
             </Col>
           </Row>

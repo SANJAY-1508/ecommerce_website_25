@@ -2,7 +2,7 @@ import React from "react";
 
 import Image1 from "../assets/images/shop/image1.jpeg";
 import Img2 from "../assets/images/shop/image2.jpeg";
-import Img3 from "../assets/images/shop/image3.jpeg";
+import Img3 from "../assets/images/category/fancy.jpg";
 import Img4 from "../assets/images/shop/image4.jpeg";
 import Img5 from "../assets/images/shop/image5.jpeg";
 import Img6 from "../assets/images/shop/image6.jpeg";
