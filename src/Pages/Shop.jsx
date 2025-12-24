@@ -4,7 +4,7 @@ import { IoFilter } from "react-icons/io5";
 import { Container, Row, Col, Offcanvas, Table } from "react-bootstrap";
 import { MdOutlineDeleteOutline } from "react-icons/md";
 import Forms from "../components/Forms";
-import Cm from '../assets/images/shop/7cm.webp'
+import Cm from "../assets/images/category/product.jpeg"
 import { useNavigate } from "react-router-dom";
 const Shop = () => {
   const [showFilter, setShowFilter] = useState(false);
@@ -43,17 +43,17 @@ const Shop = () => {
               />
             </Col>
             <Col lg="12" className="py-3">
-                <div className="category-title body-font"> Ground Chakkar</div>
+                <div className="category-title body-font"> 12CM Piggy Bank</div>
             </Col>
             <Col lg="3" className="product-box" onClick={handleDeatiledProduct}>
             <div className="img-content">
                 <img src={Cm}  className="img-fluid"/>
             </div>
             <div className="product-content">
-                <div className="body-font py-3">7 CM Electric (Box)</div>
+                <div className="body-font py-3">12CM Piggy Bank</div>
                 <div className="price-content title-font">
-                    <div className="net-price mx-2"> RS . 150</div>
-                    <div className="discounted_price mx-2"> RS.15</div>
+                    <div className="net-price mx-2"> RS . 300</div>
+                    <div className="discounted_price mx-2"> RS.150</div>
                 </div>
                 <div className="pt-3">
                     <DoButton/>

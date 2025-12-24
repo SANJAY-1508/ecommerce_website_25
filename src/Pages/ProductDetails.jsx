@@ -1,6 +1,6 @@
 import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
-import Cm from "../assets/images/shop/7cm.webp";
+import Cm from "../assets/images/category/product.jpeg"
 import Accordion from "react-bootstrap/Accordion";
 import { DoButton } from "../components/Button";
 const ProductDetails = () => {
@@ -14,10 +14,10 @@ const ProductDetails = () => {
             </Col>
             <Col lg="6">
              <div className="product-content my-5">
-                <div className="body-font py-3">7 CM Electric (Box)</div>
+                <div className="body-font py-3">12 CM Piggy Bank</div>
                 <div className="price-content title-font">
-                    <div className="net-price mx-2"> RS . 150</div>
-                    <div className="discounted_price mx-2"> RS.15</div>
+                    <div className="net-price mx-2"> RS . 300</div>
+                    <div className="discounted_price mx-2"> RS.150</div>
                 </div>
                 <div className="pt-3">
                     <DoButton/>
@@ -27,19 +27,16 @@ const ProductDetails = () => {
                 <Accordion.Item eventKey="0">
                   <Accordion.Header className="body-font">Description</Accordion.Header>
                   <Accordion.Body className="title-font">
-                    <div className="body-font">Description : </div>Bright and
-                    classic silver-white sparkle. Small in size but perfect for
-                    lighting up your celebration. Safe for kids under
-                    supervision.
-                    <div className="body-font"> Size:</div> 7 cm
-                    <div className="body-font">Color Effect:</div> Silver/ White
-                    <div className="body-font">Sparkle Duration:</div> 25–30
-                    seconds
-                    <div className="body-font">Best For:</div> Diwali,
-                    Birthdays, Weddings
+                    <div className="body-font">Description : </div>Stylish and eco-friendly Piggy Bank / Savings Can made with sturdy cardboard body and metallic lid. Perfect for storing daily savings securely while encouraging a smart saving habit. Compact, lightweight, and easy to use for both kids and adults..
+                    <div className="body-font"> Size:</div> 12 cm
+                    <div className="body-font">Color Effect:</div> brown
+                    <div className="body-font">Material:</div> Hard cardboard sticker with metal 
+                    
+                    {/* <div className="body-font">Best For:</div> Diwali,
+                    Birthdays, Weddings */}
                   </Accordion.Body>
                 </Accordion.Item>
-                <Accordion.Item eventKey="1">
+                {/* <Accordion.Item eventKey="1">
                   <Accordion.Header className="body-font">Safety Tips</Accordion.Header>
                   <Accordion.Body className="title-font">
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
@@ -51,7 +48,7 @@ const ProductDetails = () => {
                     occaecat cupidatat non proident, sunt in culpa qui officia
                     deserunt mollit anim id est laborum.
                   </Accordion.Body>
-                </Accordion.Item>
+                </Accordion.Item> */}
               </Accordion>
             </Col>
           </Row>
