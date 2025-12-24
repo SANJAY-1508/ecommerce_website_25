@@ -62,10 +62,7 @@ function Bottoms() {
             <Col lg="3" className="py-3">
               <h6 className="body-font">Contact Details</h6>
               <div className="title-font py-2">
-                ADDRESS: Piggy Bank Container, Birthday Piggy Bank,
-                Advertisement Complimentary , Return Gifts,Madurai
-                625005,Tamilnadu ,India <br />
-                Sivakasi - 626 189
+                ADDRESS: Master Tubes,Madurai 625005,Tamilnadu ,India
               </div>
               <div className="title-font py-2">
                 EMAIL: saipackagingproducts@gmail.com
