@@ -1,40 +1,39 @@
 /* eslint-disable react-hooks/set-state-in-effect */
 import { useEffect, useState } from "react";
 
-import Pots from "../assets/images/home/pots.webp";
-import Spark from "../assets/images/home/spark.webp";
-import Bomb from "../assets/images/home/bomb.webp";
-import Chakkar from "../assets/images/home/chakkar.webp";
-
+import image1 from "../assets/images/category/copier.png"
+import image2 from "../assets/images/category/custom.webp"
+import image3 from "../assets/images/category/gift.webp"
+import image4 from "../assets/images/category/paper.webp"
 const slides = [
   {
     id: 1,
-    name: "Flower Pots",
-    image: Pots,
+    name: " Copier Box",
+    image: image1,
     radius: "60% 40% 70% 30% / 40% 60% 30% 70%",
     bgColor: "linear-gradient(135deg, #FF9A9E 0%, #FAD0C4 100%)",
     textColor: "#000",
   },
   {
     id: 2,
-    name: "Sparklers",
-    image: Spark,
+    name: "Custom Box",
+    image: image2,
     radius: "20px 80px 40px 100px",
     bgColor: "linear-gradient(135deg, #00C6FF 0%, #0072FF 100%)",
     textColor: "#fff",
   },
   {
     id: 3,
-    name: "Bombs",
-    image: Bomb,
+    name: "Gift Box",
+    image: image3,
     radius: "100px 30px 120px 50px",
     bgColor: "linear-gradient(135deg, #F7971E 0%, #FFD200 100%)",
     textColor: "#000",
   },
   {
     id: 4,
-    name: "Chakkar",
-    image: Chakkar,
+    name: "PaperBox",
+    image: image4,
     radius: "50% 50% 30% 70% / 60% 40% 70% 30%",
     bgColor: "linear-gradient(135deg, #11998E 0%, #38EF7D 100%)",
     textColor: "#000",
