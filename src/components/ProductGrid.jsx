@@ -48,10 +48,16 @@ const products = [
 
 const ProductGrid = () => {
   return (
-    <section >
+    <section>
       <div className="parent">
-        {products.map((item) => (
-          <div key={item.id} className={`${item.className} product-card`}>
+        {products.map((item, index) => (
+          <div 
+            key={item.id} 
+            className={`${item.className} product-card`}
+            data-aos="zoom-in"        // Smooth zoom effect
+            data-aos-delay={index * 100} // Staggered delay (0ms, 100ms, 200ms, etc.)
+            data-aos-duration="800"
+          >
             <div>
               <img src={item.image} alt={item.name} />
             </div>

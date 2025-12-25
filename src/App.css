@@ -65,7 +65,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color:white; /* White background */
+ background-color: #fffed8;
   border-radius: 12px;  
   margin: 0 auto;       
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); /* Optional: subtle depth */
@@ -500,3 +500,8 @@
   align-content: center;
 }
 /* shop css start */
+
+
+
+
+

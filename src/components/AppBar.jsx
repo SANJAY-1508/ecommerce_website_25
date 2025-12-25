@@ -21,7 +21,7 @@ import { DoButton } from "./Button";
 const menuLinks = [
   { label: "Home", path: "/" },
   { label: "Shop", path: "/shop" },
-  { label: "Blog", path: "/blog" },
+  // { label: "Blog", path: "/blog" },
   { label: "About", path: "/about" },
   { label: "Contact", path: "/contact" },
 ];
