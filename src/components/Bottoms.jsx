@@ -6,7 +6,7 @@ import {
   FaYoutube,
   FaWhatsapp,
 } from "react-icons/fa";
-import StoreLogo from "../assets/images/Logo_1.avif";
+import StoreLogo from "../assets/images/category/Logo2.png";
 import UPI from "../assets/images/upi.webp";
 function Bottoms() {
   return (

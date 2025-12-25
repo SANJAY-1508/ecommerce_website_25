@@ -26,10 +26,11 @@ const Home = () => {
 
       {/* categrory section start */}
       <section className="category-bg">
-        <Container className="py-5">
+        <Container className="py-3">
           <Row>
             <Col lg="12">
-              <div className="shop-category text-center body-font ">Shop By Categrory</div>
+              <div className="shop-category text-center body-font">
+                Shop By Categrory</div>
             </Col>
             <Col lg="12">
               <HeroCarousel />
