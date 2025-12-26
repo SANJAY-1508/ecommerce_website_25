@@ -14,7 +14,7 @@ const Shop = () => {
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [searchTerm, setSearchTerm] = useState("");
   const [quantities, setQuantities] = useState({});
-  const { addToCart } = useCart();
+  const { addToDetails } = useCart();
   const navigate = useNavigate();
 
   const API_BASE = "http://localhost/master_tubes_website_api/api";
@@ -46,11 +46,15 @@ const Shop = () => {
       console.error("Error loading shop data:", error);
     }
   };
-  const handleIncrease = (productId) => {
+  const handleIncrease = (product) => {
+    // 1. Update local quantity state for the UI counter
     setQuantities((prev) => ({
       ...prev,
-      [productId]: (prev[productId] || 1) + 1,
+      [product.product_id]: (prev[product.product_id] || 0) + 1,
     }));
+
+  
+    addToDetails(product, 1);
   };
 
   const handleDecrease = (productId) => {
@@ -170,8 +174,8 @@ const Shop = () => {
                             </div>
                             <div className="pt-2">
                               <DoButton
-                                value={quantities[item.product_id] || 1}
-                                onAdd={() => handleIncrease(item.product_id)}
+                                value={quantities[item.product_id] || 0} // Start at 0 if not added yet
+                                onAdd={() => handleIncrease(item)} // Pass the whole 'item' object here
                                 onSubtract={() =>
                                   handleDecrease(item.product_id)
                                 }
@@ -187,8 +191,6 @@ const Shop = () => {
             })}
         </Container>
       </section>
-
-      
     </>
   );
 };
