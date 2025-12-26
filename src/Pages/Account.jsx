@@ -58,7 +58,7 @@ const Account = () => {
       </Card>
 
       {/* Add Address Modal Popup */}
-      <Modal show={showModal} onHide={handleClose} centered size="sm">
+      <Modal show={showModal} onHide={handleClose} centered className="address-modal">
         <Modal.Header closeButton className="border-0">
           <Modal.Title className="fw-bold">Add address</Modal.Title>
         </Modal.Header>
