@@ -68,6 +68,7 @@ const Shop = () => {
             <Col lg="6" md="6" className="py-2">
               <Forms
                 type="select"
+                PlaceHolder="select category"
                 options={[
                   { label: "All Categories", value: "all" },
                   ...categories.map((c) => ({
@@ -87,7 +88,7 @@ const Shop = () => {
               />
             </Col>
 
-            <Col lg="2" md="2" className="py-4 mb-1">
+            {/* <Col lg="2" md="2" className="py-4 mb-1">
               <Buttons
                 label={
                   <>
@@ -97,7 +98,7 @@ const Shop = () => {
                 onClick={() => setShowFilter(true)}
                 className="w-100"
               />
-            </Col>
+            </Col> */}
           </Row>
 
           {categories
