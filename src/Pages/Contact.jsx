@@ -1,55 +1,121 @@
-import React from "react";
-import { Col, Container, Row } from "react-bootstrap";
-import { MdOutlineLocalPhone } from "react-icons/md";
-import { IoHomeOutline } from "react-icons/io5";
-import { FaRegEnvelopeOpen } from "react-icons/fa6";
+import React,{useState} from "react";
+import { Col, Container, Row, Form, Button } from "react-bootstrap";
+import API_DOMAIN from "../config/config";
+import { MdMailOutline, MdAccessTime } from "react-icons/md";
+
+
+
 const Contact = () => {
+const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    comment: ""
+  });
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+ const handleSubmit = async (e) => {
+  e.preventDefault();
+  try {
+    const response = await fetch(`${API_DOMAIN}/contact.php`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(formData), 
+    });
+    const result = await response.json(); 
+    if (result.head.code === 200) {
+   
+      setFormData({ name: "", email: "", phone: "", comment: "" }); 
+    } else {
+      alert("Error: " + result.head.msg);
+    }
+  } catch (error) {
+    console.error("Submission Error", error);
+    alert("Failed to connect to the server.");
+  }
+};
   return (
     <>
       <section className="py-5">
         <Container>
           <Row>
-            <Col lg="12" className="py-3">
-              <h3 className="body-font text-center">Connect With Us</h3>
-            </Col>
-            <Col lg="4" className="py-3">
-              <div className="body-font text-center">
-                <div className="py-3">
-                  <MdOutlineLocalPhone size={25} />
+            {/* Left Side: Contact Information */}
+            <Col lg={5} className="py-3">
+              <div className="contact-info-section">
+                <div className="mb-4">
+                  <p className="title-font text-muted">
+                    Master Tubes, Madurai 625005, Tamilnadu, India
+                  </p>
                 </div>
-                <div>+91 93608 26673</div>
-                <div className="title-font">
-                  Contact us for details about our piggy bank collections,
-                  pricing, bulk orders, and customization options. Our team is
-                  always ready to assist you with quick and reliable support.
+
+                <div className="mb-4">
+                  <h6 className="fw-bold">Sales</h6>
+                  <p className="mb-0">+91 93608 26673 (Call/WhatsApp)</p>
+                  <h6 className="fw-bold mt-3">Support</h6>
+                  <p>+91 93608 26673</p>
                 </div>
-              </div>
-            </Col>
-            <Col lg="4" className="py-3">
-              <div className="body-font text-center">
-                <div className="py-3">
-                  <IoHomeOutline size={25} />
+
+                <div className="mb-4 d-flex align-items-center">
+                  <MdMailOutline size={20} className="me-2" />
+                  <span>saipackagingproducts@gmail.com</span>
                 </div>
-                <div>Master Tubes,Madurai 625005,Tamilnadu ,India</div>
-                <div className="title-font">
-                  Our piggy banks are carefully manufactured with quality
-                  materials and thoughtful designs. We ensure reliable service
-                  for both retail and wholesale orders from our facility.
-                </div>
-              </div>
-            </Col>
-            <Col lg="4" className="py-3">
-              <div className="body-font text-center">
-                <div className="py-3">
-                  <FaRegEnvelopeOpen size={25} />
-                </div>
-                <div>saipackagingproducts@gmail.com</div>
-                <div className="title-font">
-                  Email us for piggy bank orders, custom design requests, or
-                  business enquiries. We aim to respond promptly and provide the
-                  best customer experience.
+
+                <div className="mb-4 d-flex align-items-start">
+                  <MdAccessTime size={20} className="me-2 mt-1" />
+                  <div>
+                    <p className="mb-0">Monday to Saturday 09:30 AM - 06:30 PM</p>
+                    <p className="mb-0">Sunday 10:00 AM - 07:00 PM</p>
+                  </div>
                 </div>
               </div>
+            </Col>
+
+            {/* Right Side: Contact Form */}
+            <Col lg={7} className="py-3">
+              <h3 className="body-font mb-4">Contact form</h3>
+              <Form>
+                <Row>
+                  <Col md={6} className="mb-3">
+                  <Form.Control 
+                    name="name" placeholder="Name" required
+                    value={formData.name} onChange={handleChange}
+                    className="bg-light border-0 py-2"
+                  />
+                </Col>
+                 <Col md={6} className="mb-3">
+                  <Form.Control 
+                    name="email" type="email" placeholder="Email*" required
+                    value={formData.email} onChange={handleChange}
+                    className="bg-light border-0 py-2"
+                  />
+                </Col>
+                </Row>
+
+              <Form.Group className="mb-3">
+                <Form.Control 
+                  name="phone" placeholder="Phone number"
+                  value={formData.phone} onChange={handleChange}
+                  className="bg-light border-0 py-2"
+                />
+              </Form.Group>
+
+               <Form.Group className="mb-4">
+                <Form.Control 
+                  as="textarea" rows={4} name="comment" placeholder="Comment" required
+                  value={formData.comment} onChange={handleChange}
+                  className="bg-light border-0"
+                />
+              </Form.Group>
+
+               <Button type="submit" variant="danger" className="px-5" onClick={handleSubmit}>
+                Submit
+              </Button>
+              </Form>
             </Col>
           </Row>
         </Container>
