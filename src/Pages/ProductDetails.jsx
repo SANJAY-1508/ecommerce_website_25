@@ -12,7 +12,7 @@ const ProductDetails = () => {
   const [quantity, setQuantity] = useState(1);
 
   const API_BASE = "http://localhost/master_tubes_website_api/api";
-  const COMPANY_ID = "COMP-000001";
+
 
   useEffect(() => {
     const fetchDetails = async () => {
@@ -22,7 +22,7 @@ const ProductDetails = () => {
         const response = await fetch(`${API_BASE}/product.php`, {
           method: "POST",
           body: JSON.stringify({ 
-            company_id: COMPANY_ID, 
+         
             product_id: productId, 
             fetch_all: false 
           }),
@@ -37,7 +37,7 @@ const ProductDetails = () => {
           const relatedRes = await fetch(`${API_BASE}/product.php`, {
             method: "POST",
             body: JSON.stringify({ 
-              company_id: COMPANY_ID, 
+             
               fetch_all: true 
             }),
           });

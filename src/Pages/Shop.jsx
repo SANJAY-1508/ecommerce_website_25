@@ -11,12 +11,13 @@ const Shop = () => {
   const [products, setProducts] = useState([]);
   const [showFilter, setShowFilter] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState("all");
-  const [searchTerm, setSearchTerm] = useState(""); // ← NEW: Search term state
+  const [searchTerm, setSearchTerm] = useState("");
+ const [quantities, setQuantities] = useState({});
   
   const navigate = useNavigate();
 
   const API_BASE = "http://localhost/master_tubes_website_api/api";
-  const COMPANY_ID = "COMP-000001";
+  // Removed COMPANY_ID constant
 
   useEffect(() => {
     fetchData();
@@ -24,15 +25,17 @@ const Shop = () => {
 
   const fetchData = async () => {
     try {
+      // Removed company_id from the request body
       const catRes = await fetch(`${API_BASE}/category.php`, {
         method: "POST",
-        body: JSON.stringify({ company_id: COMPANY_ID, fetch_all: true }),
+        body: JSON.stringify({ fetch_all: true }),
       });
       const catData = await catRes.json();
 
+      // Removed company_id from the request body
       const prodRes = await fetch(`${API_BASE}/product.php`, {
         method: "POST",
-        body: JSON.stringify({ company_id: COMPANY_ID, fetch_all: true }),
+        body: JSON.stringify({ fetch_all: true }),
       });
       const prodData = await prodRes.json();
 
@@ -42,14 +45,22 @@ const Shop = () => {
       console.error("Error loading shop data:", error);
     }
   };
+const handleIncrease = (productId) => {
+  setQuantities(prev => ({ ...prev, [productId]: (prev[productId] || 1) + 1 }));
+};
 
+const handleDecrease = (productId) => {
+  setQuantities(prev => ({
+    ...prev,
+    [productId]: prev[productId] > 1 ? prev[productId] - 1 : 1
+  }));
+};
   return (
     <>
       <section className="py-5">
         <Container>
           {/* Top Controls */}
           <Row className="mb-4 align-items-end">
-            {/* Category Select */}
             <Col lg="6" md="6" className="py-2">
               <Forms
                 type="select"
@@ -61,7 +72,6 @@ const Shop = () => {
               />
             </Col>
 
-            {/* Search Bar - Now with value and onChange */}
             <Col lg="4" md="4" className="py-2">
               <Forms 
                 PlaceHolder="Search Products..." 
@@ -70,7 +80,6 @@ const Shop = () => {
               />
             </Col>
 
-            {/* View Cart Button */}
             <Col lg="2" md="2" className="py-4 mb-1">
               <Buttons
                 label={<><IoFilter className="me-2" /> View Cart</>}
@@ -83,12 +92,10 @@ const Shop = () => {
           {categories
             .filter((cat) => selectedCategory === "all" || String(cat.category_id) === String(selectedCategory))
             .map((cat) => {
-              // ← MODIFIED: Apply search filter on products
               let categoryProducts = products.filter(
                 (p) => String(p.category_id) === String(cat.category_id)
               );
 
-              // Apply search term filter (case-insensitive)
               if (searchTerm.trim()) {
                 categoryProducts = categoryProducts.filter((p) =>
                   p.product_name.toLowerCase().includes(searchTerm.toLowerCase())
@@ -108,13 +115,14 @@ const Shop = () => {
                   <Row>
                     {categoryProducts.map((item) => (
                       <Col lg="3" md="4" sm="6" key={item.product_id} className="mb-4">
-                        <div className="product-box border rounded p-2 h-100" onClick={() => navigate(`/prdt/${item.product_id}`)}>
+                        <div className="product-box border rounded p-2 h-100" >
                           <div className="img-content text-center">
                             <img 
                               src={item.product_img_url || "https://via.placeholder.com/150"} 
                               alt={item.product_name} 
                               className="img-fluid"
                               style={{ maxHeight: '180px', objectFit: 'contain' }}
+                              onClick={() => navigate(`/prdt/${item.product_id}`)}
                             />
                           </div>
                           <div className="product-content mt-2">
@@ -128,7 +136,11 @@ const Shop = () => {
                               </span>
                             </div>
                             <div className="pt-2">
-                              <DoButton />
+                             <DoButton 
+  value={quantities[item.product_id] || 1}
+  onAdd={() => handleIncrease(item.product_id)}
+  onSubtract={() => handleDecrease(item.product_id)}
+/>
                             </div>
                           </div>
                         </div>
