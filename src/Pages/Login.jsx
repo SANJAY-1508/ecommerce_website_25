@@ -20,9 +20,9 @@ const Login = () => {
   const [dob, setDob] = useState("");
 
   // EmailJS config
-  const SERVICE_ID = "service_plt00vs";
-  const TEMPLATE_ID = "template_e203ddi";
-  const PUBLIC_KEY = "XMBcEaK3-GB8fCTy2";
+  const SERVICE_ID = "service_0iy0ptd";
+  const TEMPLATE_ID = "template_ucvqly7";
+  const PUBLIC_KEY = "hqsIRM5o5zMiAJeGD";
 
   // Initialize EmailJS (do this once, e.g., in useEffect)
   React.useEffect(() => {
