@@ -15,7 +15,7 @@ import DeliveryAddress from "./Pages/DeliveryAddress";
 import Account from "./Pages/Account";
 
 const Routes = [
-  { path: "/", element: <Home /> },
+  { path: "/home", element: <Home /> },
   { path: "/shop", element: <Shop /> },
   { path: "/about", element: <About /> },
   { path: "/contact", element: <Contact /> },

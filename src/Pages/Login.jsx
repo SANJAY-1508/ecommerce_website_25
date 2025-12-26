@@ -2,8 +2,9 @@ import React, { useState } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import Forms from "../components/Forms";
 import { Buttons } from "../components/Button";
-// import emailjs from "@emailjs/browser";
+import emailjs from "@emailjs/browser";
 import API_DOMAIN from "../config/config";
+import { useNavigate } from "react-router-dom"; // Add this
 
 const Login = () => {
   // States for steps: 1 - Email, 2 - OTP, 3 - Profile
@@ -24,6 +25,8 @@ const Login = () => {
   const TEMPLATE_ID = "template_ucvqly7";
   const PUBLIC_KEY = "hqsIRM5o5zMiAJeGD";
 
+  const navigate = useNavigate(); // Initialize here
+  // ... existing states
   // Initialize EmailJS (do this once, e.g., in useEffect)
   React.useEffect(() => {
     emailjs.init(PUBLIC_KEY);
@@ -121,6 +124,7 @@ const Login = () => {
     });
     if (result.head.code === 200) {
       alert("Profile updated successfully! You are now signed in.");
+      navigate("/home");
       // Redirect or handle login success, e.g., navigate to dashboard
     } else {
       alert(result.head.msg);
@@ -301,9 +305,9 @@ const Login = () => {
                         onChange={(e) => setGender(e.target.value)}
                       >
                         <option value="">Select Gender</option>
-                        <option value="M">Male</option>
-                        <option value="F">Female</option>
-                        <option value="O">Other</option>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                        <option value="Other">Other</option>
                       </select>
                     </div>
 
