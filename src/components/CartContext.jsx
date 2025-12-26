@@ -26,6 +26,25 @@ export const CartProvider = ({ children }) => {
     setShowCart(true);
   };
 
+
+    const addToDetails = (product, quantity) => {
+    setCartItems((prevCart) => {
+      const existingItem = prevCart.find(
+        (item) => item.product_id === product.product_id
+      );
+      // Change this specific block in your addToCart function
+      if (existingItem) {
+        return prevCart.map((item) =>
+          item.product_id === product.product_id
+            ? { ...item, quantity: quantity } // Change this: use 'quantity' instead of 'item.quantity + quantity'
+            : item
+        );
+      }
+      return [...prevCart, { ...product, quantity }];
+    });
+
+    
+  };
   // Ensure this function is defined!
   const removeFromCart = (productId) => {
     setCartItems((prev) =>
@@ -41,6 +60,7 @@ export const CartProvider = ({ children }) => {
         removeFromCart, // This was likely causing your error if undefined
         showCart,
         setShowCart,
+        addToDetails
       }}
     >
       {children}
