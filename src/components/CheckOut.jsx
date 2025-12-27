@@ -75,7 +75,18 @@ const Checkout = () => {
 
 const handleSubmit = async (e) => {
   e.preventDefault();
+if (
+      !addressForm.address_line1 ||
+      !addressForm.city ||
+      !addressForm.pin_code ||
+      !addressForm.phone
+    ) {
+      setError("Please fill all required fields");
+      return;
+    }
 
+    setLoading(true);
+    setError(null);
   if (cartItems.length === 0) {
     setError("Cart is empty");
     return;
@@ -86,7 +97,12 @@ const handleSubmit = async (e) => {
 
   // 1. Define the shipping address string
   const shippingAddress = `${addressForm.first_name} ${addressForm.last_name}, ${addressForm.address_line1}, ${addressForm.city}, ${addressForm.state}, ${addressForm.pin_code}, ${addressForm.country}, Phone: ${addressForm.phone}`;
-
+ const productDetails = cartItems.map((item) => ({
+      product_id: item.product_id,
+      product_name: item.product_name,
+      quantity: item.quantity,
+      price: item.product_with_discount_price,
+    }));
   // 2. Prepare the payload (This was missing in your snippet)
   const payload = {
     customer_id: customer.customer_id,
