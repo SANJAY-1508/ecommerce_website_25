@@ -3,19 +3,25 @@ import { Container, Row, Col } from "react-bootstrap";
 import { Table } from "react-bootstrap";
 import { MdOutlineDeleteOutline } from "react-icons/md";
 import { Buttons, DoButton } from "../components/Button";
+import { Navigate } from "react-router-dom"; // Add Navigate
+
 const WishList = () => {
+  // Check if logged in immediately
+  const isLoggedIn = !!localStorage.getItem("customer");
+  if (!isLoggedIn) {
+    return <Navigate to="/login" replace />;
+  }
+
   return (
     <>
       <section className="py-5">
         <Container>
           <Row>
             <Col lg="12" className="text-center">
-                    <div className="body-font">
-                        Your wishlist looks empty
-                    </div>
-                    <div className="my-4">
-                        <Buttons label="Continue To Shopping "/>
-                    </div>
+              <div className="body-font">Your wishlist looks empty</div>
+              <div className="my-4">
+                <Buttons label="Continue To Shopping " />
+              </div>
             </Col>
           </Row>
         </Container>

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Col, Card, Form, Row } from "react-bootstrap";
 import { FaEdit } from "react-icons/fa";
+import { Navigate } from "react-router-dom"; // Add Navigate
 
 const Profile = () => {
   const [userData, setUserData] = useState({
@@ -9,8 +10,14 @@ const Profile = () => {
     email_id: "",
     phone_number: "",
     date_of_birth: "",
-    gender: ""
+    gender: "",
   });
+
+  // Check if logged in immediately
+  const isLoggedIn = !!localStorage.getItem("customer");
+  if (!isLoggedIn) {
+    return <Navigate to="/login" replace />;
+  }
 
   useEffect(() => {
     // Get stored data from localStorage
@@ -43,20 +50,20 @@ const Profile = () => {
           <Row className="mb-3">
             <Form.Group as={Col}>
               <Form.Label className="small text-muted">First name</Form.Label>
-              <Form.Control 
-                type="text" 
-                value={userData.first_name} 
-                className="bg-light border-0" 
-                readOnly 
+              <Form.Control
+                type="text"
+                value={userData.first_name}
+                className="bg-light border-0"
+                readOnly
               />
             </Form.Group>
             <Form.Group as={Col}>
               <Form.Label className="small text-muted">Last name</Form.Label>
-              <Form.Control 
-                type="text" 
-                value={userData.last_name} 
-                className="bg-light border-0" 
-                readOnly 
+              <Form.Control
+                type="text"
+                value={userData.last_name}
+                className="bg-light border-0"
+                readOnly
               />
             </Form.Group>
           </Row>
@@ -64,56 +71,79 @@ const Profile = () => {
           <Row className="mb-3">
             <Form.Group as={Col}>
               <Form.Label className="small text-muted">Email</Form.Label>
-              <Form.Control 
-                type="email" 
-                value={userData.email_id} 
-                className="bg-light border-0" 
-                readOnly 
+              <Form.Control
+                type="email"
+                value={userData.email_id}
+                className="bg-light border-0"
+                readOnly
               />
             </Form.Group>
             <Form.Group as={Col}>
-              <Form.Label className="small text-muted">Contact number</Form.Label>
-              <Form.Control 
-                type="text" 
-                value={userData.phone_number} 
-                className="bg-light border-0" 
-                readOnly 
+              <Form.Label className="small text-muted">
+                Contact number
+              </Form.Label>
+              <Form.Control
+                type="text"
+                value={userData.phone_number}
+                className="bg-light border-0"
+                readOnly
               />
             </Form.Group>
           </Row>
 
           <Form.Label className="small text-muted">Birthdate</Form.Label>
           <Row className="mb-3">
-            <Col><Form.Control placeholder="DD" value={day} className="bg-light border-0" readOnly /></Col>
-            <Col><Form.Control placeholder="MM" value={month} className="bg-light border-0" readOnly /></Col>
-            <Col><Form.Control placeholder="YYYY" value={year} className="bg-light border-0" readOnly /></Col>
+            <Col>
+              <Form.Control
+                placeholder="DD"
+                value={day}
+                className="bg-light border-0"
+                readOnly
+              />
+            </Col>
+            <Col>
+              <Form.Control
+                placeholder="MM"
+                value={month}
+                className="bg-light border-0"
+                readOnly
+              />
+            </Col>
+            <Col>
+              <Form.Control
+                placeholder="YYYY"
+                value={year}
+                className="bg-light border-0"
+                readOnly
+              />
+            </Col>
           </Row>
 
           <Form.Group>
             <Form.Label className="small text-muted d-block">Gender</Form.Label>
-            <Form.Check 
-              inline 
-              label="Male" 
-              name="gender" 
-              type="radio" 
-              checked={userData.gender === "Male"} 
-              disabled 
+            <Form.Check
+              inline
+              label="Male"
+              name="gender"
+              type="radio"
+              checked={userData.gender === "Male"}
+              disabled
             />
-            <Form.Check 
-              inline 
-              label="Female" 
-              name="gender" 
-              type="radio" 
-              checked={userData.gender === "Female"} 
-              disabled 
+            <Form.Check
+              inline
+              label="Female"
+              name="gender"
+              type="radio"
+              checked={userData.gender === "Female"}
+              disabled
             />
-            <Form.Check 
-              inline 
-              label="Other" 
-              name="gender" 
-              type="radio" 
-              checked={userData.gender === "Other"} 
-              disabled 
+            <Form.Check
+              inline
+              label="Other"
+              name="gender"
+              type="radio"
+              checked={userData.gender === "Other"}
+              disabled
             />
           </Form.Group>
         </Form>

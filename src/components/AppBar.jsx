@@ -3,7 +3,7 @@ import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import Offcanvas from "react-bootstrap/Offcanvas";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import StoreLogo from "../assets/images/category/Logo2.png";
 import SearchForms from "./SearchForms";
 import { Table } from "react-bootstrap";
@@ -27,10 +27,7 @@ const menuLinks = [
   { label: "Contact", path: "/contact" },
 ];
 
-const iconLinks = [
-  { icon: <IoPersonOutline size={22} />, path: "/profile" },
-  { icon: <IoHeartOutline size={22} />, path: "/wishlist" },
-];
+const iconLinks = [{ icon: <IoHeartOutline size={22} />, path: "/wishlist" }];
 
 function AppBar() {
   const { cartItems, showCart, setShowCart } = useCart();
@@ -48,6 +45,27 @@ function AppBar() {
     0
   );
   const totalSavings = totalOriginalPrice - totalDiscountedPrice;
+
+  // Auth check
+  const isLoggedIn = !!localStorage.getItem("customer");
+  const navigate = useNavigate();
+
+  // Dynamic user path
+  const userPath = isLoggedIn ? "/profile" : "/login";
+
+  // Handle place order click
+  const handlePlaceOrder = () => {
+    if (isLoggedIn) {
+      // Assume /checkout is your order placement page; adjust as needed
+      navigate("/checkout");
+    } else {
+      // Redirect to login with state to return to checkout after login
+      navigate("/login", { state: { redirectTo: "/checkout" } });
+    }
+  };
+
+  // Add user icon dynamically
+  const userIconLink = { icon: <IoPersonOutline size={22} />, path: userPath };
 
   return (
     <>
@@ -126,8 +144,8 @@ function AppBar() {
           </Navbar.Brand>
 
           <div className="mx-auto w-50">
-  <SearchForms placeholder="Search Products" />
-</div>
+            <SearchForms placeholder="Search Products" />
+          </div>
 
           <Nav className="ms-auto align-items-center gap-3">
             {iconLinks.map((item, i) => (
@@ -135,6 +153,11 @@ function AppBar() {
                 {item.icon}
               </Nav.Link>
             ))}
+
+            {/* Dynamic user icon */}
+            <Nav.Link as={NavLink} to={userIconLink.path}>
+              {userIconLink.icon}
+            </Nav.Link>
 
             <Nav.Link
               onClick={() => setShowCart(true)}
@@ -295,6 +318,7 @@ function AppBar() {
                     color: "white",
                     border: "none",
                   }}
+                  onClick={handlePlaceOrder}
                 >
                   PLACE ORDER
                 </button>

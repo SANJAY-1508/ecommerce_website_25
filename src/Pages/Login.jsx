@@ -4,7 +4,7 @@ import Forms from "../components/Forms";
 import { Buttons } from "../components/Button";
 import emailjs from "@emailjs/browser";
 import API_DOMAIN from "../config/config";
-import { useNavigate } from "react-router-dom"; // Add this
+import { useNavigate, useLocation } from "react-router-dom"; // Add useLocation
 
 const Login = () => {
   // States for steps: 1 - Email, 2 - OTP, 3 - Profile
@@ -25,7 +25,9 @@ const Login = () => {
   const TEMPLATE_ID = "template_ucvqly7";
   const PUBLIC_KEY = "hqsIRM5o5zMiAJeGD";
 
-  const navigate = useNavigate(); // Initialize here
+  const navigate = useNavigate();
+  const location = useLocation(); // Get location for redirect state
+
   // ... existing states
   // Initialize EmailJS (do this once, e.g., in useEffect)
   React.useEffect(() => {
@@ -125,8 +127,9 @@ const Login = () => {
     if (result.head.code === 200) {
       localStorage.setItem("customer", JSON.stringify(result.body.customer));
       alert("Profile updated successfully! You are now signed in.");
-      navigate("/home");
-      // Redirect or handle login success, e.g., navigate to dashboard
+      // Handle redirect: check state for redirectTo (e.g., from cart), else default to /home
+      const redirectTo = location.state?.redirectTo || "/home";
+      navigate(redirectTo, { replace: true });
     } else {
       alert(result.head.msg);
     }

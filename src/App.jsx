@@ -8,27 +8,27 @@ import { CartProvider } from "./components/CartContext";
 function App() {
   return (
     <CartProvider>
-    <BrowserRouter>
-      <AppBar />
-      <Routes>
-        {/* Redirect root to login */}
-        <Route path="/" element={<Navigate to="/login" replace />} />
-        
-        {routes.map((route, index) => (
-          <Route key={index} path={route.path} element={route.element}>
-            {/* Logic to render nested child routes */}
-            {route.children && route.children.map((child, childIndex) => (
-              <Route 
-                key={childIndex} 
-                path={child.path} 
-                element={child.element} 
-              />
-            ))}
-          </Route>
-        ))}
-      </Routes>
-      <Bottoms />
-    </BrowserRouter>
+      <BrowserRouter>
+        <AppBar />
+        <Routes>
+          <Route path="/" element={<Navigate to="/home" replace />} />
+
+          {routes.map((route, index) => (
+            <Route key={index} path={route.path} element={route.element}>
+              {/* Logic to render nested child routes */}
+              {route.children &&
+                route.children.map((child, childIndex) => (
+                  <Route
+                    key={childIndex}
+                    path={child.path}
+                    element={child.element}
+                  />
+                ))}
+            </Route>
+          ))}
+        </Routes>
+        <Bottoms />
+      </BrowserRouter>
     </CartProvider>
   );
 }
